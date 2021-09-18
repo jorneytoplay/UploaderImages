@@ -19,9 +19,10 @@ public class Main {
             JSONObject jsonObject = getJson.get(imageAddress+linkGeneration.generateLink());
             if(jup.checkPhoto(jsonObject)){
                 URL image = new URL(jup.getUrl(jsonObject));
-                System.out.println(image);
+                System.out.println(image+" is being downloaded");
                 try (InputStream in = image.openStream()) {
                     Files.copy(in, Paths.get(folderForImages+cnt+".jpg"));
+                    System.out.println("Profit");
                 }
                 cnt++;
             }

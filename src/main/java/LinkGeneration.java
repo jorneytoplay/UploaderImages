@@ -7,7 +7,7 @@ public class LinkGeneration {
     private static int symbolsValue;
     private int changingBit = pointers.length-1;
 
-    public String generateLink() {
+    public String generateLink() { //Метод грубой силы
         var sb = new StringBuilder();
         for (byte pointer : pointers) {
             var b = symbols.get(pointer);
@@ -52,7 +52,6 @@ public class LinkGeneration {
             cnt++;
         }
         symbolsValue = cnt;
-        System.out.println(symbols);
     }
 
 
