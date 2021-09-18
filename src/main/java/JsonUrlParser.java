@@ -1,33 +1,27 @@
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.*;
+import java.net.URL;
 
 public class JsonUrlParser {
+    JSONObject jsonObject;
+    public boolean checkPhoto(StringBuilder link){
+        String baba = String.valueOf(link);
+        jsonObject=new JSONObject(baba);
+         return jsonObject.get("status").equals("success");
 
-    String jsonURL = "C:\\Users\\71376160\\IdeaProjects\\UploaderImages\\src\\main\\resources\\link.json";
-    public void writeFile(StringBuilder sb){
-        try {
-            FileWriter fw = new FileWriter(jsonURL);
-            fw.write(String.valueOf(sb));
-            fw.flush();
-        }  catch (IOException e) {
-            e.printStackTrace();
-        }
     }
-    public String getUrl(){
-        try {
-            FileReader fr = new FileReader(jsonURL);
-         //   String mama = fr.toString();
-         //   System.out.println(mama);
-         //   JSONObject jsonObject = new JSONObject(jsonURL);
-         //   System.out.println(jsonObject);
-         //   String url = (String) jsonObject.get("full_adress");
-         //   System.out.println(url);
-         //   return url;
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+    public String getUrl(StringBuilder link){
+       try {
+           JSONObject jsonObject = new JSONObject(link);
+           System.out.println(jsonObject);
+           String url = (String) jsonObject.getJSONObject("image").get("full_adress");
+           System.out.println(url);
+           return url;
+        } catch (JSONException e) {
+           e.printStackTrace();
+       }
         return null;
     }
 }
