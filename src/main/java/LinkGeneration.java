@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LinkGeneration {
-    static List<Character> symbols = new ArrayList<Character>();
+    static List<Character> symbols = new ArrayList<>();
     private byte[] pointers = {0, 0, 0, 0, 0};//счетчик битов
     private static int symbolsValue;
     private int changingBit = pointers.length-1;
@@ -15,7 +15,6 @@ public class LinkGeneration {
             else sb.append((char) b);
         }
         pointers[changingBit] += 1;
-
         if (pointers[changingBit] == symbolsValue) {
             pointers[changingBit] = 0;
             pointers[changingBit-1]+=1;
